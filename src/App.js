@@ -1,25 +1,18 @@
 import "./App.css";
 import React, { useState } from "react";
 import Page1 from "./components/page1";
+import Page2 from "./pages/page2";
 
 function App() {
-  const [travelData, setTravelData] = useState(null);
-
-  const handlePage1Submit = (data) => {
-    setTravelData(data);
-  };
-
   return (
-    <div>
-      {travelData ? (
-        <div>
-          <p>Transport: {travelData.transport}</p>
-          <p>Distance: {travelData.distance}</p>
-        </div>
-      ) : (
-        <Page1 setTravelData={handlePage1Submit} />
-      )}
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<Page1 />} />
+        <Route exact path="/mode-choice" element={<Page2 />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 
